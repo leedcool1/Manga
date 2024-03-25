@@ -1,0 +1,58 @@
+﻿@model Manga.Models.Chuong_HinhAnh
+
+@{
+    ViewBag.Title = "ChuongAnh";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <main>
+        <section class="chapter-content">
+            <div class="chapter-container">
+                <div class="chapter-nav">
+                    <a style="text-align:center" href="@Url.Action("Index", "Home")" class="home-page"><i class="fa fa-home"></i></a>
+                    <a style="text-align:center" href="~/Home/Info/@Model.Chuong.TruyenID" class="list-chapter"><i class="fa fa-list"></i></a>
+                    <a style="text-align:center" href="~/Home/ChuongAnh/@Model.ChuongID" class="btn-prev-chapter"><i class="fas fa-arrow-left" style="padding-top: 8px;"></i> </a>
+                    <div class="theloai" style="text-align:center">
+                        @Model.Chuong.ChuongSo
+                        <div class="noidungtheloai" style="text-align:center">
+                            @foreach (var c in ViewBag.DS)
+                            {
+                                if (c.Truyen.TruyenID == Model.Chuong.TruyenID)
+                                {
+                                    <a href="~/Home/ChuongAnh/@c.ChuongID">@c.ChuongSo</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <a style="text-align:center" href="" class="btn-next-chapter"><i class="fas fa-arrow-right" style="padding-top: 8px;"></i></a>
+                </div>
+            </div>
+            <div class="chapter-image-container">
+                <div class="page-chapter">
+                    @foreach (var c in ViewBag.Img)
+                    {
+                        if (c.Chuong.ChuongID == Model.Chuong.ChuongID)
+                        {
+                            <div style="text-align:center"><img src="~/Content/Images/HinhAnhChapter/@c.url" style="text-align:center"></div>
+                            
+                        }
+                    }
+                </div>
+            </div>
+            <div class="chapter-navigation">
+                <div class="navigation">
+                    <a href="" class="prev-chapter"><i class="fas fa-arrow-left"></i><span class="pdl" style="padding-left: 5px;">Trang trước</span></a>
+                    <a href="" class="next-chapter"><span class="pdl" style="padding-right: 5px;">Trang sau</span><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

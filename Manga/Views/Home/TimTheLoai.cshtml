@@ -1,0 +1,36 @@
+﻿@model List<Manga.Models.Truyen>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/CSS/style.css">
+</head>
+<body>
+    <section class="comic-list">
+        <div class="container">
+            <h2>Các truyện tranh mới nhất</h2>
+
+            <div class="comics">
+                @foreach (var c in Model)
+                {
+                    <div class="comic">
+                        <a href="~/home/Info/@c.TruyenID">
+                            <img src="~/Content/Images/AnhDaiDien/@c.AnhDaiDien" alt="@c.Name" />
+                            <h3>@c.Name</h3>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <section class="comic-viewer">
+        <div class="container">
+            <div class="controls">
+                <button class="btn prev">Trang trước</button>
+                <button class="btn next">Trang sau</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

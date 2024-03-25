@@ -1,0 +1,127 @@
+/* main */
+.chapter-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px 100px;
+}
+
+.chapter-container {
+    background: none repeat scroll 0 0 #262a2e;
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.chapter-content .control-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    z-index: 1;
+    width: 100%;
+    background-color: #242526;
+    padding: 10px;
+    color: #FFF;
+}
+
+.nameinfo {
+    color: #fff;
+}
+
+.chapter-nav {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.home-page, .list-chapter {
+    width: 40px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 24px;
+    color: #cc2e2e;
+    padding-top: 3px;
+}
+
+    .home-page:hover, .list-chapter:hover {
+        color: #ef4e4e;
+    }
+
+.chapter-nav #select-chapter {
+    border-radius: 4px;
+    border: 2px solid transparent;
+    color: #555;
+    display: inline-block;
+    padding: 4px 6px;
+    width: 375px;
+    margin: 0 6px;
+}
+
+.btn-prev-chapter, .btn-next-chapter {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #cc2e2e;
+    color: #fff;
+    border-radius: 50%;
+    transition: .4s;
+    text-decoration: none;
+}
+
+    .btn-prev-chapter:hover, .btn-next-chapter:hover {
+        background: #ffffff;
+        color: #000000;
+    }
+
+.chapter-image-container {
+    max-width: 888px;
+    margin: 0 auto;
+}
+
+    .chapter-image-container img {
+        min-height: 35px;
+        color: #fff;
+        border-color: #000;
+        border-image: initial;
+        border-style: none;
+        border-width: medium;
+        height: auto;
+        margin-bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        z-index: 99;
+        position: relative;
+    }
+
+    .chapter-image-container .page-chapter {
+        text-align: center;
+        position: relative;
+        background: url(image/giphy.gif) center center no-repeat;
+    }
+
+.chapter-navigation {
+    padding: 10px 15px 0;
+}
+
+.navigation {
+    text-align: center;
+    margin: 5px 0 15px;
+    display: block;
+}
+
+.chapter-navigation .prev-chapter, .next-chapter {
+    background: #cc2e2e;
+    border: 1px solid #cc2e2e;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+}

@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruyenTranhH</title>
+    @Styles.Render("~/Content/CSS/layout.css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="shortcut icon" href="~/Content/Logo/logoMobile.ico" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/" title="TruyenTranhH">
+                <img src="~/Content/Logo/logoPC.png" class="logoPC" alt="TruyenTranhH">
+                <img src="~/Content/Logo/logoMobile.png" class="logoMobi" alt="TruyenTranhH">
+            </a>
+        </div>
+        <nav class="nav-container">
+            <div class="menu-icon"><i class="fas fa-list"></i></div>
+            <ul class="nav-list">
+                <li>
+                    <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+                </li>
+                <li>
+                    <div class="theloai">
+                        Thể loại
+                        <i class="fa fa-caret-down"></i>
+                        <div class="noidungtheloai">
+                            @using (Html.BeginForm(Html.BeginForm("TimTheLoai", "Home", FormMethod.Get, new { @class = "form-inline" })))
+                            {
+                                <button type="submit" value="Fantasy" name="a">Fantasy</button>
+                                <button type="submit" value="Horror" name="a">Horror</button>
+                                <button type="submit" value="Action" name="a">Action</button>
+                                <button type="submit" value="Romance" name="a">Romace</button>
+                                <button type="submit" value="Shounen" name="a">Shounen</button>
+                                <button type="submit" value="Ecchi" name="a">Ecchi</button>
+                                <button type="submit" value="Harem" name="a">Harem</button>
+                                <button type="submit" value="Drama" name="a">Drama</button>
+                            }
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="@Url.Action("Create", "Home")">Đăng Truyện</a>
+                </li>
+            </ul>
+        </nav>
+        <button id="switch-button" onclick="switchMode(this);" class="switch">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+        </button>
+        <div class="search-container">
+            <div class="search">
+                @using (Html.BeginForm(Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline" })))
+                {
+
+                    <input type="text" placeholder="Bạn muốn tìm truyện gì" value="@ViewBag.Keyword" name="SearchString">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                }
+            </div>
+            <ul class="nav-container">
+                @Html.Partial("_LoginPartial")
+            </ul>
+            
+        </div>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+        <a href="#top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <footer>
+        <div class="container-footer">
+            <div class="bottom-footer">
+                <div class="logo-footer">
+                    <a href="/"><img src="~/Content/Logo/logoPC.png" width="230" height="60" alt="TruyenTranhH"></a>
+                    <p>Copyright © 2023 TruyenTranhH</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        function switchMode(element) {
+            var body = document.querySelector('body');
+            element.classList.toggle('dark-mode');
+            body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>

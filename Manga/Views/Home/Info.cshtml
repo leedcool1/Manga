@@ -1,0 +1,71 @@
+﻿@model Manga.Models.Truyen
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/CSS/styleinfo.css" rel="stylesheet" />
+
+</head>
+<body>
+    <main>
+        <article class="info">
+            <section class="comic-info">
+                <div class="info-image">
+                    <img src="~/Content/Images/AnhDaiDien/@Model.AnhDaiDien" width="200" height="300" alt="@Model.Name">
+                </div>
+                <div class="detail-info">
+                    <p class="name-info">@Model.Name</p>
+                    <p class="name">Tên truyện: @Model.Name</p>
+                    <div class="clear"></div>
+                    <p class="author">Tác giả: @Model.TacGia</p>
+                    <p class="ngaydang">Ngày đăng: @Model.NgayDang</p>
+                    <p>Thể Loại: @Model.TheLoai</p>
+                    <div class="button-info">
+                        @foreach (var c in ViewBag.Chuong)
+                        {
+                            if (c.Truyen.TruyenID == Model.TruyenID)
+                            {
+                                <a class="btn read-from-beginning" href="~/Home/ChuongAnh/@c.ChuongID">Đọc từ đầu</a>
+                                break;
+                            }
+                        }
+                        <p class="btn follow">@Html.ActionLink("Sửa", "Edit", new { id = Model.TruyenID })</p>
+                        <p class="btn like">@Html.ActionLink("Xóa", "Delete", new { id = Model.TruyenID })</p>
+                    </div>
+                </div>
+            </section>
+            <section class="describe">
+                <h2 class="describe-title">Mô tả truyện</h2>
+                <p class="describe-text">@Model.Mota</p>
+            </section>
+            <section class="comic-chapter">
+                <h3 class="chapter-title">Danh sách chương</h3>
+                <div class="chapter-list-container">
+                    <ul class="chapter-list-items">
+                        @foreach (var c in ViewBag.Chuong)
+                        {
+                            if (c.Truyen.TruyenID == Model.TruyenID)
+                            {
+                                <li class="chapter-list-item">
+                                    <a href="~/Home/ChuongAnh/@c.ChuongID" class="chapter-link">
+                                        <span class="chapter-number">@c.ChuongSo</span>
+                                    </a>
+                                    @Html.ActionLink("Sửa", "EditChapter", new { id = c.ChuongID })
+                                    <span class="chapter-date">@c.NgayUp</span>
+                                </li>
+                            }
+                        }
+                        @Html.ActionLink("Thêm", "AddChapter")
+                    </ul>
+                </div>
+            </section>
+        </article>
+        <a href="#top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+    </main>
+</body>
+</html>
